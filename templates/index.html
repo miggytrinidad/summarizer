@@ -15,7 +15,7 @@
             <form class="col s12" action="/summarize" method="POST">
               <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="user_input" name ="user_input" class="materialize-textarea">{{results["user_input"]}}</textarea>
+                  <textarea id="user_input" name ="user_input" class="materialize-textarea">{% if results %}{{results["user_input"]}} {% endif %}</textarea>
                   <label for="user_input">Message</label>
                 </div>
               </div>
@@ -37,7 +37,7 @@
           <div class="row">
               <div class="row">
                 <div class="input-field col s12">
-                  <textarea id="result" class="materialize-textarea" disabled>{{results["summary"]}}</textarea>
+                  <textarea id="result" class="materialize-textarea" disabled>{% if results %}{{results["summary"]}}{% endif %}</textarea>
                   <label for="message">Message</label>
                 </div>  
               </div>
