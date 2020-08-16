@@ -1,5 +1,5 @@
 bert-extractive-summarizer==0.5.0
-flake8==3.7.9
+
 Flask==1.1.1
 Flask-Material==0.1.1
 fsspec==0.6.2
@@ -40,8 +40,6 @@ llvmlite==0.31.0
 locket==0.2.0
 lxml==4.5.0
 MarkupSafe==1.1.1
-matplotlib==3.1.3
-mccabe==0.6.1
 menuinst==1.4.16
 mistune==0.8.4
 mkl-fft==1.0.15
@@ -126,8 +124,6 @@ pywin32-ctypes==0.2.0
 pywinpty==0.5.7
 PyYAML==5.3
 pyzmq==18.1.1
-QDarkStyle==2.8
-QtAwesome==0.6.1
 qtconsole==4.6.0
 QtPy==1.9.0
 regex==2020.7.14
