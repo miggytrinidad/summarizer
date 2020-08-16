@@ -1,0 +1,53 @@
+{%extends "material/base.html" %}
+{% block content %}
+<nav class="purple">
+    <div class = "nav-wrapper">
+        <a href="">Summarizer</a>
+    </div>   
+</nav>
+
+<div id="basic-form" class="section">
+    <div class="row">
+      <div class="col s12 m12 l6">
+        <div class="card-panel">
+          <h4 class="header2">User Input</h4>
+          <div class="row">
+            <form class="col s12" action="/summarize" method="POST">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="user_input" name ="user_input" class="materialize-textarea">{{results["user_input"]}}</textarea>
+                  <label for="user_input">Message</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <button class="btn cyan waves-effect waves-light right" type="submit" name="action" pb-role="submit">Submit
+                    <i class="mdi-content-send right"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <!-- Form with placeholder -->
+      <div class="col s12 m12 l6">
+        <div class="card-panel">
+          <h4 class="header2">Summary</h4>
+          <div class="row">
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="result" class="materialize-textarea" disabled>{{results["summary"]}}</textarea>
+                  <label for="message">Message</label>
+                </div>  
+              </div>
+              <!-- <div class="row">
+                  Rouge Scores
+              </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
