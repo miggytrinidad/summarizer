@@ -1,0 +1,37 @@
+{% include "header.html" %}
+<main class="about-page">
+    <div class="container">
+        <h1 class="oleez-page-title wow fadeInUp">Get Summary</h1>
+        <p class="oleez-page-header-content wow fadeInUp">Lorem Ipsum</p>
+        <form action="/summarize" method="POST" class="oleez-contact-form">
+            <div class="form-group">
+                <label for="message">*Input</label>
+                <textarea name ="user_input" id="user_input" rows="10" class="oleez-textarea" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-submit">Send</button>
+        </form>
+        <section class="oleez-about-features">
+            <div class="row">
+                <div class="col-lg-12 feature-card wow fadeInUp">
+                    <h5 class="feature-card-title">LSA Summary</h4>
+                    <p class="feature-card-content">{% if results %}{{results["summaries"]["lsa_summary"]}}{% endif %}</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 feature-card wow fadeInUp">
+                    <h5 class="feature-card-title">LUHN Summary</h4>
+                    <p class="feature-card-content">{% if results %}{{results["summaries"]["luhn_summary"]}}{% endif %}</p>
+                </div>
+            </div>
+            <div class = "row">
+                <div class="col-lg-12 feature-card wow fadeInUp">
+                    <h5 class="feature-card-title">LEX Summary</h4>
+                    <p class="feature-card-content">{% if results %}{{results["summaries"]["lex_summary"]}}{% endif %}</p>
+                </div>
+            </div>
+            </div>
+        </section>
+    </div>
+</main>
+    
+{% include "footer.html" %}

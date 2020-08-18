@@ -10,11 +10,12 @@ Material(app)
 def index():
     return render_template("index.html")
 
-
-
+@app.route('/summary')
+def summary():
+    return render_template("summarize.html")
 
 @app.route('/summarize', methods=['POST'])
-def summarize():
+def summarized():
     if request.method == 'POST':
         user_input = request.form['user_input']
 
@@ -29,8 +30,6 @@ def summarize():
         lex_summary = summarizers.lex_summary(user_input, num_sentences_out = 10)
 
 
-
-
         #RESULTS
         sum_result =  {"user_input": user_input, 
                         "summaries": {
@@ -40,10 +39,9 @@ def summarize():
                             } 
                         }
 
-        return render_template("index.html", results = sum_result)
-       
-
-    return render_template("index.html")
+        return render_template("summarize.html", results = sum_result)
+    else:
+        return render_template("summarize.html")
 
 if __name__ == "__main__":
     
