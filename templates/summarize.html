@@ -1,36 +1,55 @@
 {% include "header.html" %}
 <main class="about-page">
     <div class="container">
-        <h1 class="oleez-page-title wow fadeInUp">Get Summary</h1>
-        <p class="oleez-page-header-content wow fadeInUp">Lorem Ipsum</p>
-        <form action="/summarize" method="POST" class="oleez-contact-form">
-            <div class="form-group">
-                <label for="message">*Input</label>
-                <textarea name ="user_input" id="user_input" rows="10" class="oleez-textarea" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-submit">Send</button>
-        </form>
-        <section class="oleez-about-features">
-            <div class="row">
-                <div class="col-lg-12 feature-card wow fadeInUp">
-                    <h5 class="feature-card-title">LSA Summary</h4>
-                    <p class="feature-card-content">{% if results %}{{results["summaries"]["lsa_summary"]}}{% endif %}</p>
+        <div class="row">
+            {% if results %}
+            <div class = "col-lg-6">
+            {% else %}
+            <div class = "col-lg-12">
+            {% endif %}
+                <div class = "sticky-top" style="background-color: white">
+                    <h1 class="oleez-page-title wow fadeInUp">Get Summary</h1>
+                    <p class="oleez-page-header-content wow fadeInUp">Instructions</p>
+                    <form action="/summarize" method="POST" class="oleez-contact-form">
+                        <div class="form-group">
+                            <!-- <label for="message">*Input</label> -->
+                            <textarea name ="user_input" id="user_input" rows="7" class="oleez-textarea" required>{% if results %}{{results["user_input"]}}{% endif %}</textarea>
+                        </div>
+                        <button type="submit" class="btn btn-submit" style="margin-bottom: 30px">Summarize!</button>
+                    </form>
                 </div>
             </div>
-            <div class="row">
+            <div class ="col-lg-6">
+  
+            <section class="oleez-about-features">
+                {% if results %}
+                {% for model, summary in results["summaries"].items() %}
                 <div class="col-lg-12 feature-card wow fadeInUp">
-                    <h5 class="feature-card-title">LUHN Summary</h4>
-                    <p class="feature-card-content">{% if results %}{{results["summaries"]["luhn_summary"]}}{% endif %}</p>
+                    <h5 class="feature-card-title">{{model}}</h4>
+                    <!-- <span class="post-tag">Rouge - 1</span> <span class="post-tag">Rouge - 2</span> <span class="post-tag">Rouge - L</span> -->
+                    {% if results["rouge"] %}
+                    <p class="feature-card-content">
+                        <div class = "row">
+                            <div class = "col-lg-4">
+                                <span class = "post-tag rouge">Rouge - 1</span>
+                            </div>
+                            <div class = "col-lg-4">
+                                <span class = "post-tag rouge">Rouge - 2</span>
+                            </div>
+                            <div class = "col-lg-4">
+                                <span class = "post-tag rouge">Rouge - L</span>   
+                            </div>
+                        </div>                        
+                    </p>
+                    {% endif %}
+                    <p class="feature-card-content">{{summary}}</p>
                 </div>
-            </div>
-            <div class = "row">
-                <div class="col-lg-12 feature-card wow fadeInUp">
-                    <h5 class="feature-card-title">LEX Summary</h4>
-                    <p class="feature-card-content">{% if results %}{{results["summaries"]["lex_summary"]}}{% endif %}</p>
+                {% endfor %}
+                {% endif %}
                 </div>
+            </section>
             </div>
-            </div>
-        </section>
+        </div>
     </div>
 </main>
     

@@ -5,11 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Oleez :: Home</title>
+    <title>Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/vendors/animate.css/animate.min.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/vendors/slick-carousel/slick.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/vendors/slick-carousel/slick-theme.css')}}">
     <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'assets/css/custom.css')}}">
     <script src="{{ url_for('static', filename = 'assets/vendors/jquery/jquery.min.js')}}"></script>
     <script src="{{ url_for('static', filename = 'assets/js/loader.js')}}"></script>
 </head>
@@ -18,41 +19,11 @@
     <div class="oleez-loader"></div>
     <header class="oleez-header">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand" href="index.html"><img src="{{ url_for('static', filename = 'assets/images/Logo_2.svg')}}" alt="Oleez"></a>
-            <ul class="nav nav-actions d-lg-none ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#!" data-toggle="searchModal">
-                        <img src="{{ url_for('static', filename = 'assets/images/search.svg')}}" alt="search">
-                    </a>
-                </li>
-                <li class="nav-item nav-item-cart">
-                    <a class="nav-link" href="#!">
-                        <span class="cart-item-count">0</span>
-                        <img src="{{ url_for('static', filename = 'assets/images/shopping-cart.svg')}}" alt="cart">
-                    </a>
-                </li>
-                <li class="nav-item dropdown d-none d-sm-block">
-                    <a class="nav-link dropdown-toggle" href="#!" id="languageDropdown" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">ENG</a>
-                    <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                        <a class="dropdown-item" href="#!">ARB</a>
-                        <a class="dropdown-item" href="#!">FRE</a>
-                    </div>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#!" data-toggle="offCanvasMenu">
-                        <img src="{{ url_for('static', filename = 'assets/images/social icon@2x.svg')}}" alt="social-nav-toggle">
-                    </a>
-                </li>
-            </ul>
-            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#oleezMainNav"
-                aria-controls="oleezMainNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+            <a class="navbar-brand" href="/"><img src="{{ url_for('static', filename = 'assets/images/sam_logo_v2.png')}}" style="width: 130px;" alt="Oleez"></a>
             <div class="collapse navbar-collapse" id="oleezMainNav">
                 <ul class="navbar-nav mx-auto mt-2 mt-lg-0">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/summary">Summarize</a>

@@ -1,0 +1,12 @@
+.metric {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    margin-right: 10px;
+    color: #100e0e;
+}
+
+.rouge {
+    text-align: center !important; 
+    display: block  !important;
+}

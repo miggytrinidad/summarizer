@@ -31,11 +31,13 @@ def summarized():
 
 
         #RESULTS
-        sum_result =  {"user_input": user_input, 
+        sum_result =  {"user_input": user_input,
+                        "rouge": False,
                         "summaries": {
-                            "lsa_summary": lsa_summary, 
-                            "luhn_summary": luhn_summary, 
-                            "lex_summary": lex_summary
+                            "BertSum": "Bert Sum",
+                            "Latent Semantic Analysis": lsa_summary, 
+                            "Luhn": luhn_summary, 
+                            "Lex Rank": lex_summary
                             } 
                         }
 
