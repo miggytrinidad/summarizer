@@ -5,22 +5,30 @@
             {% if results %}
             <div class = "col-lg-6">
             {% else %}
-            <div class = "col-lg-12">
+            <div class = "col-lg-8">
             {% endif %}
                 <div class = "sticky-top" style="background-color: white">
                     <h1 class="oleez-page-title wow fadeInUp">Get Summary</h1>
-                    <p class="oleez-page-header-content wow fadeInUp">Instructions</p>
+                    <!-- <p class="oleez-page-header-content wow fadeInUp">Instructions</p> -->
                     <form action="/summarize" method="POST" class="oleez-contact-form">
                         <div class="form-group">
-                            <!-- <label for="message">*Input</label> -->
+                            <label for="Summary">*Summary</label>
                             <textarea name ="user_input" id="user_input" rows="7" class="oleez-textarea" required>{% if results %}{{results["user_input"]}}{% endif %}</textarea>
                         </div>
+
+                        <div class="form-group">
+                            <input type="number" class="oleez-input" id="summary_length" name="summary_length" value = "{% if results %}{{results['summary_length']}}{% endif %}" required />
+                            <label for="summary_length">*Summary Length</label>
+                        </div>
+                        
                         <button type="submit" class="btn btn-submit" style="margin-bottom: 30px">Summarize!</button>
                     </form>
                 </div>
             </div>
+            <!-- <div class = "col-lg-4">
+                Instructionsss
+            </div> -->
             <div class ="col-lg-6">
-  
             <section class="oleez-about-features">
                 {% if results %}
                 {% for model, summary in results["summaries"].items() %}

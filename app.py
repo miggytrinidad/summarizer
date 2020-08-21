@@ -28,20 +28,21 @@ def summary():
 def summarized():
     if request.method == 'POST':
         user_input = request.form['user_input']
-
+        summary_length = request.form['summary_length']
         
         #LSA_Summary
-        lsa_summary = summarizers.lsa_summary(user_input, num_sentences_out = 10)
+        lsa_summary = summarizers.lsa_summary(user_input, num_sentences_out = summary_length)
 
         #luhn_summary
-        luhn_summary = summarizers.luhn_summary(user_input, num_sentences_out = 10)
+        luhn_summary = summarizers.luhn_summary(user_input, num_sentences_out = summary_length)
 
         #LEX_Summary
-        lex_summary = summarizers.lex_summary(user_input, num_sentences_out = 10)
+        lex_summary = summarizers.lex_summary(user_input, num_sentences_out = summary_length)
 
 
         #RESULTS
         sum_result =  {"user_input": user_input,
+                        "summary_length": summary_length,
                         "rouge": False,
                         "summaries": {
                             "BertSum": "Bert Sum",
