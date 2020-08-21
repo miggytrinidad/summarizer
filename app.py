@@ -53,7 +53,7 @@ def summarized():
                         "summary_length": summary_length,
                         "check_mode": check_mode,
                         "ref_summary": ref_summary,
-                        "summaries": {
+                        "summaries": {  
                             #"BertSum": "Bert Sum",
                             "Latent Semantic Analysis": lsa_summary, 
                             "Luhn": luhn_summary, 
