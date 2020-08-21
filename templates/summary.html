@@ -1,0 +1,76 @@
+{% include "header.html" %}
+<main class="about-page">
+    <div class="container">
+        <h2 class="oleez-page-title wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Summary</h2>
+        <!-- <p class="oleez-page-header-content wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">Have a summary in seconds!</p> -->
+        <div class="row">
+            <div class = "col-lg-8">
+            <div class = "sticky-top" style="background-color: white">
+                <form action="/summary_results" method="POST" class="oleez-contact-form">
+                    <div class="row">
+                        <div class = "form-group col-lg-6">
+                            <input type="number" class="oleez-input" id="summary_length" name="summary_length" value = "" required />
+                            <label for="summary_length">*Length</label> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Summary">*Article</label>
+                        <textarea name ="user_input" id="user_input" rows="7" class="oleez-textarea" required></textarea>
+                    </div>
+                    
+                    {% if default_state["check_mode"] %}
+                    <div class = "form-group">
+                        <input type="checkbox" id="checkmode" name="checkmode"  data-toggle="toggle" data-on="Check Mode On" data-off="Check Mode Off" data-onstyle="success" data-offstyle="default" tabindex="13">
+                    </div>
+                    {% endif %}
+                    <div class="form-group" id = "div_ref_sum" style="display:none">
+                        <label for="Summary">*Reference Summary</label>
+                        <textarea name ="ref_summary" id="ref_summary" rows="5" class="oleez-textarea"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-submit" style="margin-bottom: 30px">Summarize!</button>
+                </form>
+            </div>
+            </div>
+            <div class = "col-lg-4 sticky-top">
+                <h3 class="wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">...</h3>
+                <div class="blog-post-single">
+                    <div class="container">
+                        <div class="row">
+                            <div class="blog-post-wrapper">
+                                <div class="post-content wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
+                                    <h6 class="post-title" style="font-size: 18px; margin-top: 3px; margin-bottom: 8px;">How long you want the summary?</h6>
+                                    <p>Specify how long(in terms of sentences) you want the summary to be.</p>
+                                    <h6 class="post-title" style="font-size: 18px; margin-top: 3px; margin-bottom: 8px;">Do you have an article?</h6>
+                                    <p>Paste an article or link to the article</p>
+
+                                    <h6 class="post-title" style="font-size: 18px; margin-top: 3px; margin-bottom: 8px;">Want to good know how you are?</h6>
+                                    <p>If you have a reference summary(gold standard) about your article, 
+                                        turn on check mode to calculate the rouge scores.</p>
+                                    <!-- <blockquote class="blockquote wow fadeInUp" style="visibility: hidden; animation-name: none;">
+                                        <p>It’s safe to say that because of my unique professional experiences, I’ve tested out a lot of headphones.</p>
+                                    </blockquote> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</main>
+    
+{% include "footer.html" %}
+<script>
+    $(function() {
+        $('#checkmode').change(function() {
+            if ($(this).prop('checked')) {
+                $("#div_ref_sum").show();
+                $("#ref_summary").prop('required',true);
+            } else {
+                $("#div_ref_sum").hide();
+                $("#ref_summary").prop('required',false);
+            }
+        })
+    })
+</script>

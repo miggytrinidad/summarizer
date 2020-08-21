@@ -22,40 +22,48 @@ def index():
 
 @app.route('/summary')
 def summary():
-    return render_template("summarize.html")
+    default_state = {"check_mode": True}
+    return render_template("summary.html", default_state = default_state)
 
-@app.route('/summarize', methods=['POST'])
+@app.route('/summary_results', methods=['POST'])
 def summarized():
     if request.method == 'POST':
         user_input = request.form['user_input']
         summary_length = request.form['summary_length']
-        
+
+        if request.form.get('checkmode'):
+            check_mode = request.form['checkmode']
+            ref_summary = request.form['ref_summary']
+        else:
+            check_mode = False
+            ref_summary = ""
+
         #LSA_Summary
-        lsa_summary = summarizers.lsa_summary(user_input, num_sentences_out = summary_length)
+        lsa_summary = summarizers.lsa_summary(user_input, check_mode, ref_summary, num_sentences_out = summary_length)
 
         #luhn_summary
-        luhn_summary = summarizers.luhn_summary(user_input, num_sentences_out = summary_length)
+        luhn_summary = summarizers.luhn_summary(user_input, check_mode, ref_summary, num_sentences_out = summary_length)
 
         #LEX_Summary
-        lex_summary = summarizers.lex_summary(user_input, num_sentences_out = summary_length)
+        lex_summary = summarizers.lex_summary(user_input, check_mode, ref_summary, num_sentences_out = summary_length)
 
 
         #RESULTS
         sum_result =  {"user_input": user_input,
                         "summary_length": summary_length,
-                        "rouge": False,
+                        "check_mode": check_mode,
+                        "ref_summary": ref_summary,
                         "summaries": {
-                            "BertSum": "Bert Sum",
+                            #"BertSum": "Bert Sum",
                             "Latent Semantic Analysis": lsa_summary, 
                             "Luhn": luhn_summary, 
                             "Lex Rank": lex_summary
-                            } 
+                        }
                         }
 
-        return render_template("summarize.html", results = sum_result)
+        return render_template("summary_results.html", results = sum_result)
     else:
-        return render_template("summarize.html")
+        return render_template("summary.html")
 
 if __name__ == "__main__":
-    
     app.run(debug = True)
