@@ -39,14 +39,13 @@ def summarized():
             ref_summary = ""
 
         #LSA_Summary
-        lsa_summary = summarizers.lsa_summary(user_input, check_mode, ref_summary, num_sentences_out = summary_length)
-
+        lsa_summary = summarizers.lsa_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
+        
         #luhn_summary
-        luhn_summary = summarizers.luhn_summary(user_input, check_mode, ref_summary, num_sentences_out = summary_length)
+        luhn_summary = summarizers.luhn_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
 
         #LEX_Summary
-        lex_summary = summarizers.lex_summary(user_input, check_mode, ref_summary, num_sentences_out = summary_length)
-
+        lex_summary = summarizers.lex_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
 
         #RESULTS
         sum_result =  {"user_input": user_input,

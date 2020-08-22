@@ -44,6 +44,7 @@ def lsa_summary(user_input, ref_summary, check_mode = False, num_sentences_out =
     # Latent Semantic Analysis is an unsupervised method of summarization.
     # It combines term frequency techniques with singular value decomposition to summarize texts.
 
+    rouge_score = 0
     if checkers.is_url(user_input):
         user_input = fulltext(requests.get(user_input).text)
 
@@ -57,11 +58,14 @@ def lsa_summary(user_input, ref_summary, check_mode = False, num_sentences_out =
 
     if check_mode:
         rouge_score = get_rouge_scores(full_lsa, ref_summary)
-        return full_lsa, rouge_score
+    
+        
 
-    return full_lsa
+    return full_lsa, rouge_score
 
 def luhn_summary(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
+    rouge_score = 0
+
     if checkers.is_url(user_input):
         user_input = fulltext(requests.get(user_input).text)
 
@@ -75,12 +79,13 @@ def luhn_summary(user_input, ref_summary, check_mode = False, num_sentences_out 
 
     if check_mode:
         rouge_score = get_rouge_scores(summary_luhn, ref_summary)
-        return summary_luhn, rouge_score
+        
 
-    return summary_luhn
+    return summary_luhn, rouge_score
 
 
 def lex_summary(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
+    rouge_score = 0
     if checkers.is_url(user_input):
         user_input = fulltext(requests.get(user_input).text)
 
@@ -94,6 +99,5 @@ def lex_summary(user_input, ref_summary, check_mode = False, num_sentences_out =
 
     if check_mode:
         rouge_score = get_rouge_scores(summary_lex, ref_summary)
-        return summary_lex, rouge_score
-    
-    return summary_lex
+        
+    return summary_lex, rouge_score
