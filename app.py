@@ -60,7 +60,7 @@ def summarized():
                         }
                         }
 
-        if check_mode == True:
+        if request.form.get('checkmode'):
             #get best summary
             best_summary = evaluate.get_best_summary(sum_result)
             sum_result["best_summary"] = best_summary

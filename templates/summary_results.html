@@ -26,11 +26,9 @@
             </div>
             </div>
             <div class ="col-lg-6">
-
             <section class="oleez-about-features">
                 {% for model, summary in results["summaries"].items() %}
                 <div class="col-lg-12 feature-card wow fadeInUp">
-                    {% if results["model"] %} {{results["best_summary"]}} {% endif %}
                     {% if results["best_summary"] == model %}
                         <h4 class="feature-card-title">{{model}}</h4>
                         <span style="background-color: #f7b500;">Best Summary</span>
