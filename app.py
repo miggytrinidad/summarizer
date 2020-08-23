@@ -53,7 +53,7 @@ def summarized():
             ref_summary = ""
 
         #BERT_summary
-        bert_summary = summarizers.lsa_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
+        bert_summary = summarizers.bert_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
 
         #LSA_Summary
         lsa_summary = summarizers.lsa_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
