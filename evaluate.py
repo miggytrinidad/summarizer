@@ -1,3 +1,5 @@
+from validator_collection import validators, checkers
+import requests
 def get_best_summary(rouge_measures):
   score_board = {"Lex Rank": 0,
                   "Luhn": 0,
@@ -35,3 +37,16 @@ def order_summary(best_summary, summaries):
       ordered[k] = summaries["summaries"][k]
 
   return ordered
+
+def check_url_valid(user_input):
+  try:
+    response = requests.get(user_input)
+
+    if(response.status_code != 200): #check if url gives valid ouput
+      return False
+
+  except requests.ConnectionError as exception:
+    print(exception)
+    return False
+
+  return True

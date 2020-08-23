@@ -9,7 +9,7 @@
                 <form action="/summary_results" method="POST" class="oleez-contact-form">
                     <div class="row">
                         <div class = "form-group col-lg-6">
-                            <input type="number" class="oleez-input" id="summary_length" name="summary_length" min = 1 required />
+                            <input type="number" class="oleez-input" id="summary_length" name="summary_length" min = 1  value = 10 required />
                             <label for="summary_length">*Length</label> 
                         </div>
                     </div>
@@ -39,13 +39,13 @@
                             <div class="blog-post-wrapper">
                                 <div class="post-content wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                                     <h6 class="post-title" style="font-size: 18px; margin-top: 3px; margin-bottom: 8px;">How long you want the summary?</h6>
-                                    <p>Specify how long(in terms of sentences) you want the summary to be.</p>
-                                    <h6 class="post-title" style="font-size: 18px; margin-top: 3px; margin-bottom: 8px;">Do you have an article?</h6>
-                                    <p>Paste an article or link to the article</p>
+                                    <p>Specify how long(number of sentences) you want the summary to be. Default value is 10.</p>
+                                    <h6 class="post-title" style="font-size: 18px; margin-top: 3px; margin-bottom: 8px;">Do you have an text or article that you want to summarize?</h6>
+                                    <p>Paste an text or article link to the article textbox</p>
 
-                                    <h6 class="post-title" style="font-size: 18px; margin-top: 3px; margin-bottom: 8px;">Want to good know how you are?</h6>
-                                    <p>If you have a reference summary(gold standard) about your article, 
-                                        turn on check mode to calculate the rouge scores.</p>
+                                    <h6 class="post-title" style="font-size: 18px; margin-top: 3px; margin-bottom: 8px;">Do you want an alternative summary?</h6>
+                                    <p>If you have a reference summary(gold standard) about a text or an article, 
+                                        turn on check mode to calculate the rouge scores to get the best alternative summary.</p>
                                     <!-- <blockquote class="blockquote wow fadeInUp" style="visibility: hidden; animation-name: none;">
                                         <p>It’s safe to say that because of my unique professional experiences, I’ve tested out a lot of headphones.</p>
                                     </blockquote> -->
