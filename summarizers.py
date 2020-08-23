@@ -11,7 +11,26 @@ from sumy.summarizers.luhn import LuhnSummarizer
 #lex_summary
 from sumy.summarizers.lex_rank import LexRankSummarizer 
 from validator_collection import validators, checkers
-from rouge import Rouge 
+from rouge import Rouge
+
+from summarizer import Summarizer
+
+def bert_summary(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
+    rouge_score = 0
+    if checkers.is_url(user_input):
+        user_input = fulltext(requests.get(user_input).text)
+
+    parser = PlaintextParser(user_input, Tokenizer("english"))
+
+    model_bert = Summarizer()
+
+    result_bert = model_bert(parser.document, num_sentences_out)
+    summary_bert = "".join(result_bert)
+
+    if check_mode:
+        rouge_score = get_rouge_scores(summary_bert, ref_summary)
+    
+    return summary_bert, rouge_score
 
 def get_rouge_scores(generated_summary, ref_summary):
     rouge = Rouge()

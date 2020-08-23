@@ -1,7 +1,8 @@
 from validator_collection import validators, checkers
 import requests
 def get_best_summary(rouge_measures):
-  score_board = {"Lex Rank": 0,
+  score_board = {"BERT SUM": 0,
+                  "Lex Rank": 0,
                   "Luhn": 0,
                   "Latent Semantic Analysis": 0}
 
