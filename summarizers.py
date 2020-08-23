@@ -15,6 +15,11 @@ from validator_collection import validators, checkers
 
 from rouge import Rouge 
 
+#bert
+import torch
+import torchvision
+from summarizer import Summarizer
+
 def get_rouge_scores(generated_summary, ref_summary):
     rouge = Rouge()
     r_scores = rouge.get_scores(generated_summary, ref_summary)
@@ -28,17 +33,6 @@ def get_rouge_scores(generated_summary, ref_summary):
         scores[rouge] = temp_output
 
     return scores
-
-# def bert_summarize(user_input, num_sentences_out = 10):
-#     model = Summarizer()
-
-#     if checkers.is_url('not a valid url'):
-#         user_input = fulltext(requests.get(user_input).text)
-    
-#     result = model(user_input, num_sentences = num_sentences_out - 1)
-#     summary = "".join(result)
-
-#     return summary
 
 def lsa_summary(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
     # Latent Semantic Analysis is an unsupervised method of summarization.
@@ -101,3 +95,4 @@ def lex_summary(user_input, ref_summary, check_mode = False, num_sentences_out =
         rouge_score = get_rouge_scores(summary_lex, ref_summary)
         
     return summary_lex, rouge_score
+

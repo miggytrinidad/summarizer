@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 import json
 import summarizers
+import evaluate
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -29,7 +30,7 @@ def summary():
 def summarized():
     if request.method == 'POST':
         user_input = request.form['user_input']
-        summary_length = request.form['summary_length']
+        summary_length = int(request.form['summary_length'])
 
         if request.form.get('checkmode'):
             check_mode = request.form['checkmode']
@@ -53,12 +54,21 @@ def summarized():
                         "check_mode": check_mode,
                         "ref_summary": ref_summary,
                         "summaries": {  
-                            #"BertSum": "Bert Sum",
                             "Latent Semantic Analysis": lsa_summary, 
                             "Luhn": luhn_summary, 
                             "Lex Rank": lex_summary
                         }
                         }
+
+        if check_mode == True:
+            #get best summary
+            best_summary = evaluate.get_best_summary(sum_result)
+            sum_result["best_summary"] = best_summary
+
+            #Arrange summaries
+            sum_result["summaries"] = evaluate.order_summary(best_summary, sum_result)
+
+        
 
         return render_template("summary_results.html", results = sum_result)
     else:
