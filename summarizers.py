@@ -10,15 +10,8 @@ from sumy.summarizers.lsa import LsaSummarizer
 from sumy.summarizers.luhn import LuhnSummarizer
 #lex_summary
 from sumy.summarizers.lex_rank import LexRankSummarizer 
-
 from validator_collection import validators, checkers
-
 from rouge import Rouge 
-
-#bert
-import torch
-import torchvision
-from summarizer import Summarizer
 
 def get_rouge_scores(generated_summary, ref_summary):
     rouge = Rouge()
