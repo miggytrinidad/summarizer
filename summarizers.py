@@ -14,7 +14,28 @@ from validator_collection import validators, checkers
 from rouge import Rouge
 
 from summarizer import Summarizer
+from transformers import AutoConfig, AutoTokenizer, AutoModel
 
+# def bert_summary_2(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
+#     rouge_score = 0
+#     if checkers.is_url(user_input):
+#         user_input = fulltext(requests.get(user_input).text)
+
+#     # Load model, model config and tokenizer via Transformers
+#     m = "bert-base-multilingual-cased"
+#     custom_config = AutoConfig.from_pretrained(m)
+#     custom_config.output_hidden_states=True
+#     custom_tokenizer = AutoTokenizer.from_pretrained(m)
+#     custom_model = AutoModel.from_pretrained(m, config=custom_config)
+#     model_bert = Summarizer(custom_model=custom_model, custom_tokenizer=custom_tokenizer)
+
+#     result_bert = model_bert(user_input, num_sentences = num_sentences_out)
+#     summary_bert = "".join(result_bert)
+
+#     if check_mode:
+#         rouge_score = get_rouge_scores(summary_bert, ref_summary)
+    
+#     return summary_bert, rouge_score
 
 def bert_summary(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
     rouge_score = 0
