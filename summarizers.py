@@ -13,7 +13,7 @@ from sumy.summarizers.lex_rank import LexRankSummarizer
 from validator_collection import validators, checkers
 from rouge import Rouge
 
-from summarizer import Summarizer
+#from summarizer import Summarizer
 from transformers import AutoConfig, AutoTokenizer, AutoModel
 
 # def bert_summary_2(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
@@ -37,20 +37,20 @@ from transformers import AutoConfig, AutoTokenizer, AutoModel
     
 #     return summary_bert, rouge_score
 
-def bert_summary(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
-    rouge_score = 0
-    if checkers.is_url(user_input):
-        user_input = fulltext(requests.get(user_input).text)
+# def bert_summary(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
+#     rouge_score = 0
+#     if checkers.is_url(user_input):
+#         user_input = fulltext(requests.get(user_input).text)
 
-    model_bert = Summarizer("distilbert-base-uncased")
+#     model_bert = Summarizer("distilbert-base-uncased")
 
-    result_bert = model_bert(user_input, num_sentences = num_sentences_out)
-    summary_bert = "".join(result_bert)
+#     result_bert = model_bert(user_input, num_sentences = num_sentences_out)
+#     summary_bert = "".join(result_bert)
 
-    if check_mode:
-        rouge_score = get_rouge_scores(summary_bert, ref_summary)
+#     if check_mode:
+#         rouge_score = get_rouge_scores(summary_bert, ref_summary)
     
-    return summary_bert, rouge_score
+#     return summary_bert, rouge_score
 
 def get_rouge_scores(generated_summary, ref_summary):
     rouge = Rouge()

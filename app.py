@@ -53,7 +53,7 @@ def summarized():
             ref_summary = ""
 
         #BERT_summary
-        bert_summary = summarizers.bert_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
+        #bert_summary = summarizers.bert_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
 
         #LSA_Summary
         lsa_summary = summarizers.lsa_summary(user_input, ref_summary, check_mode, num_sentences_out = summary_length)
@@ -70,7 +70,7 @@ def summarized():
                         "check_mode": check_mode,
                         "ref_summary": ref_summary,
                         "summaries": {  
-                            "BERT SUM": bert_summary,
+                            #"BERT SUM": bert_summary,
                             "Latent Semantic Analysis": lsa_summary, 
                             "Luhn": luhn_summary, 
                             "Lex Rank": lex_summary
