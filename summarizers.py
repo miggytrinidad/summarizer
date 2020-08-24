@@ -14,7 +14,7 @@ from validator_collection import validators, checkers
 from rouge import Rouge
 
 #from summarizer import Summarizer
-from transformers import AutoConfig, AutoTokenizer, AutoModel
+#from transformers import AutoConfig, AutoTokenizer, AutoModel
 
 # def bert_summary_2(user_input, ref_summary, check_mode = False, num_sentences_out = 10):
 #     rouge_score = 0
